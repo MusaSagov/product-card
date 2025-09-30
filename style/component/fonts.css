@@ -1,0 +1,35 @@
+.fn1 {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 200%;
+  text-transform: uppercase;
+  color: #a5a3b9;
+}
+
+.fn2 {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 135%;
+  color: #515076;
+}
+
+.fn3 {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 138%;
+  color: #515076;
+}
+
+.fn4 {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 120%;
+  color: #515076;
+}
+
+.fn5 {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 120%;
+  color: #515076;
+}
