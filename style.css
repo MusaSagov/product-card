@@ -13,14 +13,33 @@ ul,
 ol {
   list-style: none;
 }
+
 .container {
-  background-image: url("/images/background-title.png");
-  background-position: 85px -289px;
-  background-repeat: no-repeat;
-  background-size: initial;
+  position: relative;
   max-width: 1280px;
   min-height: 1715px;
   margin: 0 auto;
+  padding-top: 220px;
+  background: none;
+  z-index: 2;
+}
+
+.background-image {
+  content: "";
+  position: absolute;
+  top: 152px;
+  left: 84px;
+  width: 790px;
+  height: 697px;
+  background-image: url("/images/background-title.png");
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+.title {
+  position: relative;
+  z-index: 1;
+  text-align: center;
 }
 
 .title h1 {
@@ -31,12 +50,15 @@ ol {
 }
 
 .card-container {
+  position: relative;
+  z-index: 1;
   margin-top: 110px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 45px;
 }
+
 .card-container-item {
   width: 340px;
   height: 573px;
