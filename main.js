@@ -50,9 +50,9 @@ function showMessage(message) {
 
 //Вывод в консоль лог при наведение
 
-const productTitle = document.querySelector("#product-selection-title");
+const mainTitle = document.querySelector("#main-title");
 
-productTitle.addEventListener("mouseover", () =>
+mainTitle.addEventListener("mouseover", () =>
   outputConsoleLog("Выбери свой продукт")
 );
 function outputConsoleLog(message) {
