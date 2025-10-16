@@ -1,7 +1,7 @@
 //Покраска всех карточек
 
 const productCards = document.querySelectorAll(".card-container-item");
-const changeColorAllCardBtn = document.querySelector("#change-all-cards-color");
+const changeColorAllCardBtn = document.querySelector("#change-cards-color");
 const mantleColorHash = "#24C6DC";
 
 changeColorAllCardBtn.addEventListener("click", () => {
@@ -40,22 +40,22 @@ function openGoogle() {
 
 //Вывод в консоль лог при нажатии
 
-const outputLogBtn = document.querySelector("#log-to-console");
+const outputMessageBtn = document.querySelector("#message-console");
 
-outputLogBtn.addEventListener("click", () => outputConsoleLog("ДЗ №4"));
-function outputConsoleLog(message) {
+outputMessageBtn.addEventListener("click", () => showMessage("ДЗ №4"));
+function showMessage(message) {
   alert(message);
   console.log(message);
 }
 
 //Вывод в консоль лог при наведение
 
-const mainTitle = document.querySelector("#main-title-log");
+const productTitle = document.querySelector("#product-selection-title");
 
-mainTitle.addEventListener("mouseover", () =>
-  showMessageTitle("Выбери свой продукт")
+productTitle.addEventListener("mouseover", () =>
+  outputConsoleLog("Выбери свой продукт")
 );
-function showMessageTitle(message) {
+function outputConsoleLog(message) {
   console.log(message);
 }
 
