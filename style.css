@@ -14,6 +14,18 @@ ol {
   list-style: none;
 }
 
+.color-switch-first {
+  background-color: lightblue;
+  color: black;
+  padding: 5px;
+}
+
+.color-switch-second {
+  background-color: coral;
+  color: white;
+  padding: 10px;
+}
+
 .container {
   position: relative;
   max-width: 1280px;
