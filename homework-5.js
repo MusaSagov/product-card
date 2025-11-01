@@ -24,11 +24,11 @@ compareSpeed(367);
 let productName = "хлеб";
 let productPrice = 23;
 
-const checkBudget = (currentBudget) => {
+const checkBudget = (currentBudget) =>
   currentBudget >= productPrice
     ? `${productName} приобретён. Спасибо за покупку!`
     : `Вам не хватает ${productPrice - currentBudget}$, пополните баланс`;
-};
+
 console.log(checkBudget(12));
 
 //6. Функция.
@@ -46,8 +46,8 @@ console.log(studyEvaluation(70));
 console.log(studyEvaluation(25));
 console.log(studyEvaluation(10));
 
-//7. Аспекты жизни
-let disappointment = "разочарование";
-let life = "жизнь";
-let family = "семья";
-let mentalRest = "отдых";
+//7.Перменные в JS
+let studentNames = "Stoun";
+let workingAxe = "топор";
+let familyCar = "Largus";
+let userEmail = "sagov82@mail.ru";
