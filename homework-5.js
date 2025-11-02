@@ -46,8 +46,8 @@ console.log(studyEvaluation(70));
 console.log(studyEvaluation(25));
 console.log(studyEvaluation(10));
 
-//7.Перменные в JS
-let studentNames = "Stoun";
+//7.Переменные в JS
+let studentName = "Stoun";
 let workingAxe = "топор";
 let familyCar = "Largus";
 let userEmail = "sagov82@mail.ru";
