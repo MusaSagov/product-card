@@ -21,19 +21,18 @@ const carInfo = {
   transmissionType: "Автоматическая",
 };
 
-carInfo.firstName = userProfile.firstName;
-carInfo.lastName = userProfile.lastName;
+carInfo.owner = userProfile;
 
 console.log(carInfo);
 
 //5.Проверка объекте на наличие свойства
 
-function checkAndAddMaxSpeed(car) {
+function checkMaxSpeed(car) {
   if (!car.hasOwnProperty("maxSpeed")) {
     carInfo.maxSpeed = 180;
   }
 }
-checkAndAddMaxSpeed(carInfo);
+checkMaxSpeed(carInfo);
 console.log(carInfo);
 
 //6. Выводим свойство и значение объекта
@@ -48,7 +47,7 @@ showPropertyValue(userProfile, "country");
 const productNames = ["фрукты", "конфеты", "овощи", "хлеб", "молоко"];
 
 //8. Массив из объектов. Добавление объекта в массив
-const russianClassics = [
+const russianClassicBooks = [
   {
     title: "Война и мир",
     author: "Лев Толстой",
@@ -72,7 +71,7 @@ const russianClassics = [
   },
 ];
 
-russianClassics.push({
+russianClassicBooks.push({
   title: "Отцы и дети",
   author: "Иван Тургенев",
   year: 1862,
@@ -80,10 +79,10 @@ russianClassics.push({
   genre: "Роман",
 });
 
-console.log(russianClassics);
+console.log(russianClassicBooks);
 
 //9. Конкатенация массивов
-const booksMarvel = [
+const marvelBooks = [
   {
     title: "Гарри Поттер и философский камень",
     author: "Дж. К. Роулинг",
@@ -118,20 +117,20 @@ const booksMarvel = [
   },
 ];
 
-console.log(booksMarvel);
+console.log(marvelBooks);
 
-const allBooksCollection = [...booksMarvel, ...russianClassics];
+const allBooksCollection = [...marvelBooks, ...russianClassicBooks];
 
 console.log(allBooksCollection);
 
 //10. Использование метода forEach в массивах
 
-function addIsRareProperty(booksArray) {
+function markRarity(booksArray) {
   booksArray.forEach((book, index) => {
     book.isRare = book.year < 2000;
   });
 }
 
-addIsRareProperty(allBooksCollection);
+markRarity(allBooksCollection);
 
 console.log("Обновлённый массив книг:", allBooksCollection);
