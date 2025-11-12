@@ -134,3 +134,5 @@ function markRarity(booksArray) {
 markRarity(allBooksCollection);
 
 console.log("Обновлённый массив книг:", allBooksCollection);
+
+
