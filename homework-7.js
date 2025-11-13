@@ -49,8 +49,7 @@ console.log(userCommentsPostId);
 
 // 9. Деструктуризация и перебор массива
 const userCommentsSimplified = userComments.map((comment) => {
-  const { id, name } = comment;
-  return { id, name };
+  return { id: comment.id, name: comment.name };
 });
 
 console.log(userCommentsSimplified);
@@ -63,7 +62,7 @@ const updatedUserComments = userComments.map((obj) => {
 console.log(updatedUserComments);
 
 // 11.  Вывод определенного элемента с помощью метода reduce
-const userEmails = userComments.reduce(function (result, user) {
+const userEmails = userComments.reduce((result, user) => {
   result.push(user.email);
   return result;
 }, []);
@@ -72,6 +71,7 @@ console.log(userEmails);
 const emailIsList = userComments.map((user) => user.email);
 
 console.log(emailIsList);
+
 // 12. Преобразование массива в строку(toString()) и добавление разделителя(join())
 
 const emailAddresses = emailIsList.toString();
