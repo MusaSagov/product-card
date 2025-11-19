@@ -1,0 +1,48 @@
+export const productCards = [
+  {
+    imageUrl: "/images/moist-mousse.png",
+    name: "Увлажняющий мусс",
+    description: "Глубоко увлажняют кожу лица, оставляя её мягкой и гладкой.",
+    ingredient1: "активные натуральные комплексы",
+    ingredient2: "витамины С, А, РР, В И Е",
+    ingredient3: "солнцезащитные компоненты",
+    price: "2 750",
+  },
+  {
+    imageUrl: "/images/moist-masque.png",
+    name: "Увлажняющая маска",
+    description: "Способствует удерживанию влаги в верхних слоях кожи.",
+    ingredient1: "воски",
+    ingredient2: "минералы",
+    ingredient3: "масла",
+    price: "3 500",
+  },
+  {
+    imageUrl: "/images/gel-washing.png",
+    name: "Гель для умывания",
+    description: "Интенсивно очищает, не повреждает защитный барьер кожи.",
+    ingredient1: "минералы",
+    ingredient2: "витамины С, А, РР, В И Е",
+    ingredient3: "солнцезащитные компоненты",
+    price: "1 650",
+  },
+  {
+    imageUrl: "/images/set-first.png",
+    name: "Подарочный набор №1",
+    description: "Набор, состоящий из увлажняющего крема и маски.",
+    ingredient1: "активные натуральные комплексы",
+    ingredient2: "витамины С, А, РР, В И Е",
+    ingredient3: "солнцезащитные компоненты",
+    price: "1 650",
+  },
+  {
+    imageUrl: "images/set-five.png",
+    name: "Подарочный набор №5",
+    description:
+      "Весь набор средств Invisible symphony, крем, маска, мусс и гель для умывания.",
+    ingredient1: "воски",
+    ingredient2: "минералы",
+    ingredient3: "масла",
+    price: "7 520",
+  },
+];
