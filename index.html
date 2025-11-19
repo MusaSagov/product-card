@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Каталог товаров</title>
-    <script type="module" src="homework-7.js" defer></script>
+    <script type="module" src="homework-8.js" defer></script>
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -25,124 +25,30 @@
           <button id="color-switch">Переключатель цветов</button>
           <h1 id="main-title">Выбери свой продукт</h1>
         </div>
-        <ul class="card-container">
+       
+        <ul class="card-container"></ul>
+        <template class = "composition-template"> 
           <li class="card-container-item">
-            <img
-              src="/images/moist-mousse.png"
+              <img class="images"
               alt="Увлажняющий мусс"
               width="290"
               height="245"
-            />
-            <span class="product-category">для нормальной кожи</span>
-            <h3 class="product-name">Увлажняющий мусс</h3>
-            <p class="product-description">
-              Глубоко увлажняют кожу лица, оставляя её мягкой и гладкой.
-            </p>
-            <span>Состав:</span>
-            <ul class="product-compound">
-              <li>активные натуральные комплексы</li>
-              <li>витамины С, А, РР, В И Е</li>
-              <li>солнцезащитные компоненты</li>
-            </ul>
-            <div class="product-price-container">
+              />
+              <span class="product-category">для нормальной кожи</span>
+              <h3 class="product-name"></h3>
+              <p class="product-description"></p>
+              <span>Состав:</span>
+              <ul class="product-compound">
+                <li class="productCards-ingredient1"></li>
+                <li class="productCards-ingredient2"></li>
+                <li class="productCards-ingredient3"></li>
+              </ul>
+              <div class="product-price-container">
               <span class="product-price">Цена</span>
-              <span class="product-price-lable">2 750 &#8381;</span>
-            </div>
+              <span class="product-price-label"></span>
+              </div>
           </li>
-          <li class="card-container-item">
-            <img
-              src="/images/moist-masque.png"
-              alt="Увлажняющий мусс"
-              width="290"
-              height="245"
-            />
-            <span class="product-category">для нормальной кожи</span>
-            <h3 class="product-name">Увлажняющая маска</h3>
-            <p class="product-description">
-              Способствует удерживанию влаги в верхних слоях кожи.
-            </p>
-            <span>Состав:</span>
-            <ul class="product-compound">
-              <li>воски</li>
-              <li>минералы</li>
-              <li>масла</li>
-            </ul>
-            <div class="product-price-container">
-              <span class="product-price">Цена</span>
-              <span class="product-price-lable">3 500 &#8381;</span>
-            </div>
-          </li>
-          <li class="card-container-item">
-            <img
-              src="/images/gel-washing.png"
-              alt="Увлажняющий мусс"
-              width="290"
-              height="245"
-            />
-            <span class="product-category">для нормальной кожи</span>
-            <h3 class="product-name">Гель для умывания</h3>
-            <p class="product-description">
-              Интенсивно очищает, не повреждает защитный барьер кожи.
-            </p>
-            <span>Состав:</span>
-            <ul class="product-compound">
-              <li>минералы</li>
-              <li>витамины С, А, РР, В И Е</li>
-              <li>солнцезащитные компоненты</li>
-            </ul>
-            <div class="product-price-container">
-              <span class="product-price">Цена</span>
-              <span class="product-price-lable">1 650 &#8381;</span>
-            </div>
-          </li>
-          <li class="card-container-item">
-            <img
-              src="/images/set-first.png"
-              alt="Подарочный набор №1"
-              width="290"
-              height="245"
-            />
-            <span class="product-category">для нормальной кожи</span>
-            <h3 class="product-name">Подарочный набор №1</h3>
-            <p class="product-description">
-              Набор, состоящий из увлажняющего крема и маски.
-            </p>
-            <span>Состав:</span>
-            <ul class="product-compound">
-              <li>воски</li>
-              <li>минералы</li>
-              <li>масла</li>
-            </ul>
-            <div class="product-price-container">
-              <span class="product-price">Цена</span>
-              <span class="product-price-lable">4 750 &#8381;</span>
-            </div>
-          </li>
-          <li class="card-container-item">
-            <img
-              src="/images/set-five.png"
-              alt="Подарочный набор №5"
-              width="290"
-              height="245"
-            />
-            <span class="product-category">для нормальной кожи</span>
-            <h3 class="product-name">Подарочный набор №5</h3>
-            <p class="product-description">
-              Весь набор средств Invisible symphony, крем, маска, мусс и гель
-              для умывания.
-            </p>
-            <span>Состав:</span>
-            <ul class="product-compound">
-              <li>воски</li>
-              <li>минералы</li>
-              <li>масла</li>
-            </ul>
-            <div class="product-price-container">
-              <span class="product-price">Цена</span>
-              <span class="product-price-lable">7 520 &#8381;</span>
-            </div>
-          </li>
-        </ul>
+        </template>
       </div>
     </main>
   </body>
