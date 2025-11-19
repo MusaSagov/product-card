@@ -79,3 +79,5 @@ const emailsString = emailIsList.join("/-/");
 
 console.log(emailAddresses);
 console.log(emailsString);
+
+
