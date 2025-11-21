@@ -1,108 +1,71 @@
 // 3.Создаем и реализовываем шаблон для продуктовых карточек как в лекции.
 import { productCards } from "./product.card.js";
 
-const productCompound = document.querySelector(".card-container");
-const compositionTemplate = document.querySelector(".composition-template");
+const productCompound = document.querySelector(".product-card-list");
+const compositionTemplate = document.querySelector(".product-card-template");
+
+const fillProductCard = ((productCardClone, productCard) => {
+    productCardClone.querySelector(".images").src = `/images/${productCard.imageName}`;
+    productCardClone.querySelector(".product-category").textContent = productCard.category;
+    productCardClone.querySelector(".product-name").textContent = productCard.name;
+    productCardClone.querySelector(".product-price-label").innerHTML = `${productCard.price}&nbsp;₽`;
+    const ingredientsList = productCardClone.querySelector(".product-compound")
+    productCard.ingredients.forEach(ingredient => {
+    const li = document.createElement("li");    
+    li.textContent = ingredient;
+    ingredientsList.appendChild(li);
+  })})
 
 productCards.forEach((productCard) => {
   const productCardClone = compositionTemplate.content.cloneNode(true);
-  productCardClone.querySelector(".images").src = productCard.imageUrl;
-  productCardClone.querySelector(".product-name").textContent = productCard.name;
-  productCardClone.querySelector(".productCards-ingredient1").textContent = productCard.ingredient1;
-  productCardClone.querySelector(".productCards-ingredient2").textContent = productCard.ingredient2;
-  productCardClone.querySelector(".productCards-ingredient3").textContent = productCard.ingredient3;
-  productCardClone.querySelector(".product-price-label").innerHTML = `${productCard.price}&nbsp;₽`;
-
+  fillProductCard(productCardClone, productCard);
+  
   productCompound.appendChild(productCardClone);
-  console.log(productCompound);
+  
 });
 
-// 4.Оптимизация дублирования querySelector, textContent вариант - маппинг
-const mapping = {
-  imageUrl: ".images",
-  name: ".product-name",
-  ingredient1: ".productCards-ingredient1",
-  ingredient2: ".productCards-ingredient2",
-  ingredient3: ".productCards-ingredient3",
-  price: ".product-price-label",
-};
+//4. Использование метода .reduce(), для получения строки из название продуктовых карточек рзаделенной ";"
+const productNamesString = productCards.reduce((acc, productCard) => {
+    acc.push(productCard.name);
+    return acc;
+  }, [])
+  .join(";");
 
-productCards.forEach((productCard) => {
-  const clone = compositionTemplate.content.cloneNode(true);
-  const mappingEntries = Object.entries(mapping);
-  mappingEntries.forEach(([key, selector]) => {
-    const element = clone.querySelector(selector);
-    if (!element) return;
+console.log(productNamesString);
 
-    if (key === "imageUrl") {
-      element.src = productCard[key];
-    } else {
-      element.textContent = productCard[key];
-    }
-  });
-
-  productCompound.appendChild(clone);
-});
-
-//5. Использование метода .reduce(), для получения строки из название продуктовых карточек рзаделенной ";"
-
-const productCardNames = productCards.reduce((acc, productCard, index) => {
-  return acc + productCard.name + (index < productCards.length - 1 ? ";" : "");
-}, "");
-
-console.log(productCardNames);
-
-// 6.Получение массива объектов, где ключем является название продукта, а значением - его описание
-
-const productDescriptions = productCards.reduce((acc, productCard) => {
-  acc.push({
-    [productCard.name]: productCard.description,
-  });
-  return acc;
-}, []);
+// 5.Получение массива объектов, где ключем является название продукта, а значением - его описание
+const productDescriptions = productCards.reduce(
+  (acc, { name, description }) => [...acc, { [name]: description }],
+  []
+);
 
 console.log(productDescriptions);
 
-//7. Вывод карточек по запросу пользователя от 1 до 5
-
-function getCardsCount() {
+//6. Вывод карточек по запросу пользователя от 1 до 5
+function startAndDisplayCards() {
   let input;
   do {
     input = prompt("Сколько карточек отобразить? От 1 до 5");
     if (input === null) {
       alert("Ввод отменен");
-      return 0;
+      return;
     }
     input = Number(input);
-    if (isNaN(input) || input < 1 || input > 5) {
-      alert("Неверный ввод! Пожалуйста, введите число от 1 до 5.");
+    if (isNaN(input) || input < 1 || input > 5 || !Number.isInteger(input)) {
+      alert("Неверный ввод! Пожалуйста, введите целое число от 1 до 5.");
     }
-  } while (isNaN(input) || input < 1 || input > 5);
-  return input;
+  } while (isNaN(input) || input < 1 || input > 5 || !Number.isInteger(input));
+  
+  displayCards(input);
 }
+
+window.onload = startAndDisplayCards;
 
 function displayCards(count) {
   productCompound.innerHTML = "";
-  for (let i = 0; i < count; i++) {
-    const productCard = productCards[i];
-
+  productCards.slice(0, count).forEach(productCard => {
     const cardClone = compositionTemplate.content.cloneNode(true);
-
-    cardClone.querySelector(".images").src = productCard.imageUrl;
-    cardClone.querySelector(".images").alt = productCard.name;
-    cardClone.querySelector(".product-name").textContent = productCard.name;
-    cardClone.querySelector(".productCards-ingredient1").textContent = productCard.ingredient1;
-    cardClone.querySelector(".productCards-ingredient2").textContent = productCard.ingredient2;
-    cardClone.querySelector(".productCards-ingredient3").textContent = productCard.ingredient3;
-    cardClone.querySelector(".product-price-label").innerHTML = `${productCard.price}&nbsp;₽`;
-
+    fillProductCard(cardClone, productCard);
     productCompound.appendChild(cardClone);
-  }
+  });
 }
-
-window.onload = function () {
-  const cardsCount = getCardsCount();
-  if (cardsCount > 0) {
-    displayCards(cardsCount);
-  }
-};
