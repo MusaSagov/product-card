@@ -5,7 +5,7 @@ export const productCards = [
     name: "Увлажняющий мусс",
     description: "Глубоко увлажняют кожу лица, оставляя её мягкой и гладкой.",
     ingredients: ["активные натуральные комплексы", "витамины С, А, РР, В И Е", "солнцезащитные компоненты"],
-    price: 2750,
+    price: 2750
   },
   {
     imageName: "moist-masque",
@@ -13,7 +13,7 @@ export const productCards = [
     name: "Увлажняющая маска",
     description: "Способствует удерживанию влаги в верхних слоях кожи.",
     ingredients: [ "воски", "минералы", "масла"],
-    price: 3500,
+    price: 3500
   },
   {
     imageName: "gel-washing",
@@ -21,7 +21,7 @@ export const productCards = [
     name: "Гель для умывания",
     description: "Интенсивно очищает, не повреждает защитный барьер кожи.",
     ingredients: ["минералы", "витамины С, А, РР, В И Е", "солнцезащитные компоненты"],
-    price: 1650,
+    price: 1650
   },
   {
     imageName: "set-first",
@@ -29,7 +29,7 @@ export const productCards = [
     name: "Подарочный набор №1",
     description: "Набор, состоящий из увлажняющего крема и маски.",
     ingredients: ["активные натуральные комплексы", "витамины С, А, РР, В И Е",  "солнцезащитные компоненты"],
-    price: 1650,
+    price: 1650
   },
   {
     imageName: "set-five",
@@ -37,6 +37,6 @@ export const productCards = [
     name: "Подарочный набор №5",
     description: "Весь набор средств Invisible symphony, крем, маска, мусс и гель для умывания.",
     ingredients: [ "воски", "минералы", "масла"],
-    price: 7520,
+    price: 7520
   }
 ];

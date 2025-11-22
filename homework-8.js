@@ -5,16 +5,20 @@ const productCompound = document.querySelector(".product-card-list");
 const compositionTemplate = document.querySelector(".product-card-template");
 
 const createProductCard = (productCardClone, productCard) => {
+
   productCardClone.querySelector(".images").src = `/images/${productCard.imageName}.png`;
   productCardClone.querySelector(".product-category").textContent = productCard.category;
   productCardClone.querySelector(".product-name").textContent = productCard.name;
   productCardClone.querySelector(".product-price-label").innerHTML = `${productCard.price}&nbsp;₽`;
+
   const ingredientsList = productCardClone.querySelector(".product-compound")
+  
   productCard.ingredients.forEach(ingredient => {
-  const li = document.createElement("li");    
-  li.textContent = ingredient;
-  ingredientsList.appendChild(li);
+    const li = document.createElement("li");
+    li.textContent = ingredient;
+    ingredientsList.appendChild(li);
   })
+
   productCompound.appendChild(productCardClone);
 };
 
