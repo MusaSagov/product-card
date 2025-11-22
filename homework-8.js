@@ -1,11 +1,13 @@
 // 3.Создаем и реализовываем шаблон для продуктовых карточек как в лекции.
-import { productCards } from "./product.card.js";
+import { productCards } from "./product-cards.js";
 
 const productCompound = document.querySelector(".product-card-list");
 const compositionTemplate = document.querySelector(".product-card-template");
 
-const fillProductCard = ((productCardClone, productCard) => {
-    productCardClone.querySelector(".images").src = `/images/${productCard.imageName}`;
+const createProductCard = productCard => {
+
+  const productCardClone = compositionTemplate.content.cloneNode(true);
+    productCardClone.querySelector(".images").src = `/images/${productCard.imageName}.png`;
     productCardClone.querySelector(".product-category").textContent = productCard.category;
     productCardClone.querySelector(".product-name").textContent = productCard.name;
     productCardClone.querySelector(".product-price-label").innerHTML = `${productCard.price}&nbsp;₽`;
@@ -14,30 +16,21 @@ const fillProductCard = ((productCardClone, productCard) => {
     const li = document.createElement("li");    
     li.textContent = ingredient;
     ingredientsList.appendChild(li);
-  })})
-
-productCards.forEach((productCard) => {
-  const productCardClone = compositionTemplate.content.cloneNode(true);
-  fillProductCard(productCardClone, productCard);
-  
+  })
   productCompound.appendChild(productCardClone);
-  
-});
+};
+
+productCards.forEach(productCard => createProductCard(productCard));
+
+
 
 //4. Использование метода .reduce(), для получения строки из название продуктовых карточек рзаделенной ";"
-const productNamesString = productCards.reduce((acc, productCard) => {
-    acc.push(productCard.name);
-    return acc;
-  }, [])
-  .join(";");
+const productNamesString = productCards.reduce((acc, productCard) => (acc.push(productCard.name), acc), []).join(";");
 
 console.log(productNamesString);
 
 // 5.Получение массива объектов, где ключем является название продукта, а значением - его описание
-const productDescriptions = productCards.reduce(
-  (acc, { name, description }) => [...acc, { [name]: description }],
-  []
-);
+const productDescriptions = productCards.reduce((accumulator, current) => (accumulator[current.name] = current.description, accumulator), {});
 
 console.log(productDescriptions);
 
@@ -65,7 +58,7 @@ function displayCards(count) {
   productCompound.innerHTML = "";
   productCards.slice(0, count).forEach(productCard => {
     const cardClone = compositionTemplate.content.cloneNode(true);
-    fillProductCard(cardClone, productCard);
+    createProductCard(cardClone, productCard);
     productCompound.appendChild(cardClone);
   });
 }
