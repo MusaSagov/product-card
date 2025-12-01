@@ -1,4 +1,4 @@
-let currentUser = {};
+let currentUser = undefined;
 
 function getFormData(event) {
   event.preventDefault();
