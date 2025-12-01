@@ -1,3 +1,5 @@
+@import url(./style/form.css);
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -61,7 +63,7 @@ ol {
   color: rgba(81, 80, 118, 1);
 }
 
-.card-container {
+.product-card-list {
   position: relative;
   z-index: 1;
   margin-top: 110px;
@@ -122,8 +124,150 @@ ol {
   line-height: 24px;
 }
 
-.product-price-lable {
+.product-price-label {
   font-weight: 400;
   font-size: 20px;
   line-height: 24px;
+}
+
+/* footer */
+
+.footer {
+  width: 1728px;
+  height: 477px;
+  margin: 0 auto;
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 162px;
+  background: #3a3a3a;
+  font-family: Arial, sans-serif;
+}
+
+.footer__wrap {
+  width: 1569px;
+  height: 147px;
+  display: flex;
+  margin: 0 auto;
+  align-items: flex-start;
+  margin-top: 85px;
+}
+
+.presentation {
+  width: 409px;
+  height: 147px;
+  color: #FFFFFF;
+}
+
+.presentation__title {
+  font-weight: 800;
+  font-size: 28px;
+  margin-bottom: 16px;
+  line-height: 154%;
+  text-transform: capitalize;
+  color: #fff;
+}
+
+.presentation__text {
+  font-weight: 400;
+  margin-bottom: 42px;
+  font-size: 18px;
+  line-height: 154%;
+  text-transform: capitalize;
+  color: #fff;
+}
+
+.presentation__socials img {
+  width: 22px;
+  height: 15px;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.promotion {
+  width: 477px;
+  height: 103px;
+  margin-left: 132px;
+}
+
+.promotion__title {
+  margin: 0 39px 17px 78px;
+  font-size: 24px;
+  color: #FFFFFF;
+}
+
+.promotion__form {
+  width: 477px;
+  height: 61px;
+  display: flex;
+  align-items: center;
+  background: #FFFFFF;
+  border-radius: 6px;
+  
+}
+
+.promotion__form input {
+  border: none;
+  padding: 20px 31px;
+  width: 311px;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.btn {
+  font-weight: 500;
+  font-size: 18px;
+  color: #000;
+  background: #FFFFFF;
+  padding: 20px 15px ;
+  cursor: pointer;
+  border: none;
+}
+
+.quick-links {
+  width: 178px;
+  height: 147px;
+  margin-left: 373px;
+  font-size: 20px;
+  color: #FFFFFF;
+}
+
+.quick-links__title {
+  font-size: 20px;
+  margin-bottom: 23px;
+  color: #FFFFFF;
+}
+
+.footer__links{
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+.footer__links a {
+  text-decoration: none;
+  font-size: 18px;
+  opacity: 0.9;
+  color: #FFFFFF;
+}
+
+.footer__email {
+  text-align: center;
+}
+
+.footer__divider {
+  display: block;
+  border: 1px solid #fff;
+  width: 66px;
+  margin: 0 auto 10px;
+}
+
+.footer__copyright {
+  opacity: 0.8;
+  font-weight: 400;
+  font-size: 18px;
+  color: #fff;
+  padding-top: 33px;
 }
