@@ -1,14 +1,11 @@
+import { FormHandler } from './form-handler.js';
 import { FormBase } from './form.js';
 import { Modal } from './modal.js';
 
 let currentUser = {};
 
 // Добавил логику к футеру email. 
-const emailForm = new FormBase("#email-form")
-emailForm.form.addEventListener('submit', (event) => {
-  event.preventDefault();
-  console.log(emailForm.getFormData());
-})
+const emailForm = new FormHandler("#email-form")
 
 //Форма регистрации с логикой
 document.querySelectorAll('.show-password').forEach(checkbox => {
@@ -25,8 +22,9 @@ document.querySelectorAll('.show-password').forEach(checkbox => {
 
 const formRegister = new FormBase("#register-form")
 formRegister.form.addEventListener('submit', (event) => {
-  event.preventDefault();    
-  if(!formRegister.isValid()) {
+  event.preventDefault();
+  const isFormValid = formRegister.isValid();   
+  if(!isFormValid) {
     alert("регистрация отклонена");
     document.getElementById('confirmPassword').focus();
     return;
@@ -45,7 +43,7 @@ formRegister.form.addEventListener('submit', (event) => {
 });
 
 // Модальное окно
-const authModal = new Modal('.modal.overlay')
+const authModal = new Modal('.modal');
 const openBtn = document.querySelector("#openModalBtn");
 const closeBtn = document.querySelector(".close");
 
@@ -77,7 +75,7 @@ authForm.form.addEventListener('submit', (event) => {
 
 // Структура и наследуемость классов.
 
- class Tanks {
+ class Tank {
     constructor(level, title, type) {
       this.level = level;
       this.title = title;
@@ -90,20 +88,20 @@ authForm.form.addEventListener('submit', (event) => {
 
 }
 
-class CountryTank extends Tanks {
+class Warship extends Tank {
   constructor(level, title, type, country) {
     super(level, title, type)
     this.country = country;
   }
 
-  infoTanks() {
+  infoWarship() {
     console.log(`${this.level}, ${this.title}, ${this.type}, ${this.country}`);
   }
 }
 
-const is7 = new Tanks(10, "ИС-7", "тяжелый");
-const is3 = new Tanks(8, "ИС-3", "тяжелый")
+const is7 = new Tank(10, "ИС-7", "тяжелый");
+const is3 = new Tank(8, "ИС-3", "тяжелый")
 is7.start();
 
-const description = new CountryTank(10, "ИС-7", "тяжелый", "СССР")
-description.infoTanks();
+const description = new Warship(3, "корвет", "легкий", "СССР")
+description.infoWarship();
