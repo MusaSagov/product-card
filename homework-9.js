@@ -46,7 +46,7 @@ formRegister.form.addEventListener('submit', (event) => {
 const authModal = new Modal('.modal');
 const openBtn = document.querySelector("#openModalBtn");
 const closeBtn = document.querySelector(".close");
-
+authModal.handleBackdropClick();
 openBtn.addEventListener('click', (event) => {
   authModal.open();
 });
@@ -80,6 +80,7 @@ authForm.form.addEventListener('submit', (event) => {
       this.level = level;
       this.title = title;
       this.type = type;
+      
   }
 
   start() {
@@ -89,13 +90,13 @@ authForm.form.addEventListener('submit', (event) => {
 }
 
 class Warship extends Tank {
-  constructor(level, title, type, country) {
+  constructor(level, title, type, shipTonnage) {
     super(level, title, type)
-    this.country = country;
+    this.shipTonnage = shipTonnage;
   }
 
   infoWarship() {
-    console.log(`${this.level}, ${this.title}, ${this.type}, ${this.country}`);
+    console.log(`${this.level}, ${this.title}, ${this.type}, ${this.shipTonnage}`);
   }
 }
 
@@ -103,5 +104,5 @@ const is7 = new Tank(10, "ИС-7", "тяжелый");
 const is3 = new Tank(8, "ИС-3", "тяжелый")
 is7.start();
 
-const description = new Warship(3, "корвет", "легкий", "СССР")
+const description = new Warship(3, "корвет", "легкий", 1000)
 description.infoWarship();

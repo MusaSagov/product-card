@@ -26,5 +26,12 @@ export class FormBase {
     const field =this.form.querySelector(`#${fieldId}`);
     return field ? field.checkValidity() : true;
   }
+
+  handleSubmit(callback) {
+    this.form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      callback(this.getFormData());
+    });
+  }
 }
 
