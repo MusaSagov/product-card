@@ -1,9 +1,7 @@
 class Modal {
-  constructor(selector) {
+  constructor(selector = '.modal.overlay') {
     this.modal = document.querySelector(selector);
-    if (!this.modal ) {
-      throw new Error(`Элемент с ID '${selector}' не найден`);
-    }
+    
   }
 
   handleBackdropClick() {

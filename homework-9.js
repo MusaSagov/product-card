@@ -43,9 +43,10 @@ formRegister.form.addEventListener('submit', (event) => {
 });
 
 // Модальное окно
-const authModal = new Modal('.modal');
+const authModal = new Modal();
 const openBtn = document.querySelector("#openModalBtn");
 const closeBtn = document.querySelector(".close");
+
 authModal.handleBackdropClick();
 openBtn.addEventListener('click', (event) => {
   authModal.open();
