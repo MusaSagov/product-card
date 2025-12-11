@@ -9,7 +9,7 @@ export class FormBase {
   }
 
   isValid() {
-    return false;
+    return this.form.checkValidity();
   }
 
   reset() {
@@ -37,9 +37,10 @@ export class FormRegister extends FormBase {
   }
 
   isValid() {
+    const formValid = super.isValid();
     const password = this.form.querySelector('input[name="password"]')?.value || '';
     const confirmPassword = this.form.querySelector('input[name="confirmPassword"]')?.value || '';
-    return password === confirmPassword && password.length >= 3;
+    return formValid && (password === confirmPassword && password.length >= 3);
   }
 }
 
