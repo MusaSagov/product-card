@@ -1,11 +1,10 @@
-import { AuthForm, FormBase } from './form.js';
-import { AuthModal} from './modal.js';
+import { AuthForm, EmailForm, FormRegister } from './form.js';
+import { AuthModal } from './modal.js';
 
 let currentUser = {};
 
 // Добавил логику к футеру email. 
-const emailForm = new FormBase("email-form");
-emailForm.emailHandler();
+const emailForm = new EmailForm();
 
 //Форма регистрации с логикой
 document.querySelectorAll('.show-password').forEach(checkbox => {
@@ -20,7 +19,7 @@ document.querySelectorAll('.show-password').forEach(checkbox => {
   });
 });
 
-const formRegister = new FormBase("register-form")
+const formRegister = new FormRegister()
 formRegister.form.addEventListener('submit', (event) => {
   event.preventDefault();
   const isFormValid = formRegister.isValid();   

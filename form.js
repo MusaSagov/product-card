@@ -1,9 +1,6 @@
 export class FormBase {
-  constructor(formId = "email-form") {
+  constructor(formId) {
     this.form = document.getElementById(formId);
-    if (formId === "email-form") {
-      this.emailHandler();
-    }
   }
 
   getFormData() {
@@ -12,9 +9,7 @@ export class FormBase {
   }
 
   isValid() {
-    const password = this.form.querySelector('input[name="password"]')?.value || '';
-    const confirmPassword = this.form.querySelector('input[name="confirmPassword"]')?.value || '';
-    return password === confirmPassword && password.length >= 3;
+    return false;
   }
 
   reset() {
@@ -26,6 +21,25 @@ export class FormBase {
       e.preventDefault();
       console.log(this.getFormData());
     });
+  }
+}
+
+export class EmailForm extends FormBase {
+  constructor() {
+    super('email-form');
+    this.emailHandler(); 
+  }
+}
+
+export class FormRegister extends FormBase {
+  constructor() {
+    super('register-form')
+  }
+
+  isValid() {
+    const password = this.form.querySelector('input[name="password"]')?.value || '';
+    const confirmPassword = this.form.querySelector('input[name="confirmPassword"]')?.value || '';
+    return password === confirmPassword && password.length >= 3;
   }
 }
 

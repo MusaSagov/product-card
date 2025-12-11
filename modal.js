@@ -1,5 +1,5 @@
 class Modal {
-  constructor(selector = '.modal.overlay') {
+  constructor(selector) {
     this.modal = document.querySelector(selector);
   }
 
@@ -44,4 +44,4 @@ class AuthModal extends Modal {
   }
 }
 
-export { Modal, AuthModal};
+export { Modal, AuthModal };
