@@ -21,11 +21,6 @@ export class FormBase {
     this.form.reset();
   }
 
-  validateField(fieldId) {
-    const field = this.form.querySelector(`#${fieldId}`);
-    return field ? field.checkValidity() : true;
-  }
-
   emailHandler() {
     this.form.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -34,3 +29,8 @@ export class FormBase {
   }
 }
 
+export class AuthForm extends FormBase {
+  constructor() {
+    super('auth-form')
+  }
+}

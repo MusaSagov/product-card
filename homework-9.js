@@ -1,5 +1,5 @@
-import { FormBase } from './form.js';
-import { Modal } from './modal.js';
+import { AuthForm, FormBase } from './form.js';
+import { AuthModal} from './modal.js';
 
 let currentUser = {};
 
@@ -43,7 +43,7 @@ formRegister.form.addEventListener('submit', (event) => {
 });
 
 // Модальное окно
-const authModal = new Modal();
+const authModal = new AuthModal();
 const openBtn = document.querySelector("#openModalBtn");
 const closeBtn = document.querySelector(".close");
 
@@ -57,7 +57,7 @@ closeBtn.addEventListener('click', (event) => {
 });
 
 // Аутентификация
-const authForm = new FormBase("auth-form");
+const authForm = new AuthForm();
 authForm.form.addEventListener('submit', (event) => {
   event.preventDefault();
   const userData = authForm.getFormData();

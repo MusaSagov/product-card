@@ -1,7 +1,6 @@
 class Modal {
   constructor(selector = '.modal.overlay') {
     this.modal = document.querySelector(selector);
-    
   }
 
   handleBackdropClick() {
@@ -39,4 +38,10 @@ class Modal {
   }
 }
 
-export { Modal };
+class AuthModal extends Modal {
+  constructor() {
+    super('.modal.overlay')
+  }
+}
+
+export { Modal, AuthModal};
