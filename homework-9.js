@@ -1,11 +1,11 @@
-import { FormHandler } from './form-handler.js';
 import { FormBase } from './form.js';
 import { Modal } from './modal.js';
 
 let currentUser = {};
 
 // Добавил логику к футеру email. 
-const emailForm = new FormHandler("#email-form")
+const emailForm = new FormBase("email-form");
+emailForm.emailHandler();
 
 //Форма регистрации с логикой
 document.querySelectorAll('.show-password').forEach(checkbox => {
@@ -20,7 +20,7 @@ document.querySelectorAll('.show-password').forEach(checkbox => {
   });
 });
 
-const formRegister = new FormBase("#register-form")
+const formRegister = new FormBase("register-form")
 formRegister.form.addEventListener('submit', (event) => {
   event.preventDefault();
   const isFormValid = formRegister.isValid();   
@@ -57,7 +57,7 @@ closeBtn.addEventListener('click', (event) => {
 });
 
 // Аутентификация
-const authForm = new FormBase("#auth-form");
+const authForm = new FormBase("auth-form");
 authForm.form.addEventListener('submit', (event) => {
   event.preventDefault();
   const userData = authForm.getFormData();
@@ -76,12 +76,11 @@ authForm.form.addEventListener('submit', (event) => {
 
 // Структура и наследуемость классов.
 
- class Tank {
-    constructor(level, title, type) {
-      this.level = level;
-      this.title = title;
-      this.type = type;
-      
+class Tank {
+  constructor(level, title, type) {
+    this.level = level;
+    this.title = title;
+    this.type = type;
   }
 
   start() {

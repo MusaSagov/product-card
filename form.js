@@ -1,9 +1,8 @@
 export class FormBase {
-  constructor(formId) {
-    const cleanId = formId.replace('#', '');
-    this.form = document.getElementById(cleanId);
-    if (!this.form) {
-      throw new Error(`Форма с id "${cleanId}" не найдена`);
+  constructor(formId = "email-form") {
+    this.form = document.getElementById(formId);
+    if (formId === "email-form") {
+      this.emailHandler();
     }
   }
 
@@ -23,14 +22,14 @@ export class FormBase {
   }
 
   validateField(fieldId) {
-    const field =this.form.querySelector(`#${fieldId}`);
+    const field = this.form.querySelector(`#${fieldId}`);
     return field ? field.checkValidity() : true;
   }
 
-  handleSubmit(callback) {
-    this.form.addEventListener('submit', (event) => {
-      event.preventDefault();
-      callback(this.getFormData());
+  emailHandler() {
+    this.form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      console.log(this.getFormData());
     });
   }
 }
