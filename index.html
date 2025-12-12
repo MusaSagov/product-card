@@ -4,8 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Каталог товаров</title>
-    <script type="module" src="homework-8.js" defer></script>
-    <script src="homework-9.js" defer></script>
+    <script type="module" src="main.js" defer></script>
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -66,7 +65,7 @@
     </div>
     <div class="form-group">
       <label for="password">Пароль</label>
-      <input id="password" type="password" name="password" required minlength="6">
+      <input id="password" type="password" name="password" required minlength="3">
       <label class="checkbox-label">
         <input type="checkbox" class="show-password" data-target="password">
         <span class="checkmark"></span>Показать пароль
@@ -74,7 +73,7 @@
     </div>
     <div class="form-group">
       <label for="confirmPassword">Повторите пароль</label>
-      <input id="confirmPassword" type="password" name="confirmPassword" required minlength="6">
+      <input id="confirmPassword" type="password" name="confirmPassword" required minlength="3">
       <label class="checkbox-label">
         <input type="checkbox" class="show-password" data-target="confirmPassword">
         <span class="checkmark"></span>Показать пароль
@@ -89,7 +88,7 @@
     <div class="modal overlay">
       <div class="modal-content">
         <span class="close">&times;</span>
-        <form class="form-modal" method="post" action="#" >
+        <form id="auth-form" class="form-modal" method="post" action="#" >
           <h2 class="modal-title">Авторизация</h2>
           <div class="form-group">
             <label for="login-modal">Логин</label>
@@ -99,7 +98,7 @@
             <label for="password-modal">Пароль</label>
             <input type="text" name="password" id="password-modal" required>
           </div>
-          <button class="open-btn">Войти</button>
+          <button type="button class="open-btn">Войти</button>
         </form>
       </div>
     </div>
