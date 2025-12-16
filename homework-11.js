@@ -1,4 +1,5 @@
-import { Cafe, Coffee } from './cafe-drinks.js';
+import { Cafe } from './cafeDrinks/cafe.js';
+import { Coffee } from './cafeDrinks/coffee.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   console.log('Приложение загружено');
@@ -6,5 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const cafe = new Cafe('Stolicha', 'Kislovodsk');
   const cappuccino = new Coffee('Капучино', 'Большой', 5.5, 'Горячий', 'Арабика', 'Овсяное');
 
-  cafe.orderDrink(cappuccino, 'Готов');
+  cafe.orderDrink(cappuccino);
+  console.log(cappuccino.getBrewingProcess());
 });
