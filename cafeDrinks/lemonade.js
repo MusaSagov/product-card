@@ -1,4 +1,4 @@
-import { Drink } from './drink.js';
+import { Drink } from './Drink.js';
 
 export class Lemonade extends Drink {
   constructor(name, size, price, temperature, flavor) {

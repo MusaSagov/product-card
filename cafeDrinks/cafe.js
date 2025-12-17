@@ -15,6 +15,5 @@ export class Cafe {
 
   orderDrink(drink) {
     console.log(`Готовим в кафе-${this.name} в городе ${this.location}`);
-    drink.presentDrink();
   }
 }

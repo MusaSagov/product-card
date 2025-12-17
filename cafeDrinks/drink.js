@@ -18,7 +18,16 @@ export class Drink {
     return this.#temperature;
   }
 
+  #setTemperature(temp) {
+    this.#temperature = temp;
+  }
+
   #prepareDrink() {
+    const info = this.getBrewingProcess();      // наследник обязан реализовать этот метод
+    console.log('Готовим напиток:');
+    console.log(info);
+    this.#setTemperature('Готов к подаче');
+    return info;
   }
 
   presentDrink() {
