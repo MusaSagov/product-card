@@ -23,7 +23,7 @@ export class Drink {
   }
 
   #prepareDrink() {
-    const info = this.getBrewingProcess();      // наследник обязан реализовать этот метод
+    const info = this.getBrewingProcess();
     console.log('Готовим напиток:');
     console.log(info);
     this.#setTemperature('Готов к подаче');
