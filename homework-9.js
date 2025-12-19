@@ -1,20 +1,12 @@
-let currentUser = undefined;
+import { AuthForm, EmailForm, FormRegister } from './form.js';
+import { AuthModal } from './modal.js';
 
-function getFormData(event) {
-  event.preventDefault();
-  const form = event.target;
-  const formData = new FormData(form);
-  return Object.fromEntries(formData.entries());
-}
+let currentUser = {};
 
-// 4. Добавил логику к футеру email. 
-const emailForm = document.querySelector("#email-form")
-emailForm.addEventListener('submit', (event) => {
-  const data = getFormData(event);
-  console.log(data);
-})
+// Добавил логику к футеру email. 
+const emailForm = new EmailForm();
 
-// 5. Форма регистрации с логикой
+//Форма регистрации с логикой
 document.querySelectorAll('.show-password').forEach(checkbox => {
   checkbox.addEventListener('change', function() {
     const targetId = this.dataset.target;
@@ -27,59 +19,89 @@ document.querySelectorAll('.show-password').forEach(checkbox => {
   });
 });
 
-const formRegister = document.querySelector("#register-form")
-formRegister.addEventListener('submit', (event) => {
+const formRegister = new FormRegister()
+formRegister.form.addEventListener('submit', (event) => {
   event.preventDefault();
-  const password = document.querySelector("#password").value;
-  const confirmPassword = document.querySelector("#confirmPassword").value;
-  if(password !== confirmPassword){
+  const isFormValid = formRegister.isValid();   
+  if(!isFormValid) {
     alert("регистрация отклонена");
     document.getElementById('confirmPassword').focus();
     return;
   }
   alert(' Пароли совпадают! Форма готова');
 
-  const userData = getFormData(event);
-  userData.createdOn = new Date();
-  console.log('Форма готова', userData);
+  const userData = formRegister.getFormData();
+  userData.createdOn = new Date().toISOString();
+  
 
-// 6. Сохранение объекта в переменную.
-  currentUser[userData.login] = userData.password;
-  alert('Регистрация успешна!'); 
-})
+//  Сохранение объекта в переменную.
+  currentUser[userData.login] = userData;
+  console.log('Пользователь сохранен:', currentUser);
+  alert('Регистрация успешна!');
+  formRegister.reset(); 
+});
 
-// 8.Модальное окно
+// Модальное окно
+const authModal = new AuthModal();
 const openBtn = document.querySelector("#openModalBtn");
-const modal = document.querySelector(".modal");
 const closeBtn = document.querySelector(".close");
 
+authModal.handleBackdropClick();
 openBtn.addEventListener('click', (event) => {
-  modal.classList.add("modal-showed");
+  authModal.open();
 });
 
 closeBtn.addEventListener('click', (event) => {
-  modal.classList.remove("modal-showed");
+  authModal.close();
 });
 
-modal.addEventListener('click', (event) => {
-  if (event.target === modal) {
-    modal.classList.remove('modal-showed');
-  }
-});
-
-//7. Аутентификация
-const authForm = document.querySelector(".form-modal");
-authForm.addEventListener('submit', (event) => {
+// Аутентификация
+const authForm = new AuthForm();
+authForm.form.addEventListener('submit', (event) => {
   event.preventDefault();
-  const userData = getFormData(event);
+  const userData = authForm.getFormData();
   
+  const savedUser = currentUser[userData.login];
   console.log('Авторизация данные:', userData);
   console.log('База currentUser:', currentUser);
 
-  if (currentUser[userData.login] && currentUser[userData.login] === userData.password) {
+  if (savedUser && savedUser.password === userData.password) {
     alert("Успешный вход!");
-    modal.classList.remove("modal-showed");
+    authModal.close();
   } else {
     alert("Неверный логин или пароль");
   }
 });
+
+// Структура и наследуемость классов.
+
+class Tank {
+  constructor(level, title, type) {
+    this.level = level;
+    this.title = title;
+    this.type = type;
+  }
+
+  start() {
+    console.log(`${this.level}, ${this.title}, ${this.type}`);
+  }
+
+}
+
+class Warship extends Tank {
+  constructor(level, title, type, shipTonnage) {
+    super(level, title, type)
+    this.shipTonnage = shipTonnage;
+  }
+
+  infoWarship() {
+    console.log(`${this.level}, ${this.title}, ${this.type}, ${this.shipTonnage}`);
+  }
+}
+
+const is7 = new Tank(10, "ИС-7", "тяжелый");
+const is3 = new Tank(8, "ИС-3", "тяжелый")
+is7.start();
+
+const description = new Warship(3, "корвет", "легкий", 1000)
+description.infoWarship();
