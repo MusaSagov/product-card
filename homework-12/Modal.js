@@ -3,6 +3,8 @@ export class Modal {
     this.modal = document.getElementById(modalId);
     this.overlay = document.getElementById('overlay');
     this.shouldCloseOnOverlay = shouldCloseOnOverlay;
+    this.closeButton = this.modal.querySelector('#modal-close-button');
+
     this.#initOpen(buttonId);
   }
 
@@ -32,9 +34,8 @@ export class Modal {
   }
 
   #addCloseListeners() {
-    const closeButton = this.modal.querySelector('#modal-close-button');
-    if (closeButton) {
-      closeButton.addEventListener('click', this.#handleClose);
+    if (this.closeButton) {
+      this.closeButton.addEventListener('click', this.#handleClose);
     }
     if (this.shouldCloseOnOverlay) {
       this.overlay.addEventListener('click', this.#handleClose);
@@ -42,9 +43,8 @@ export class Modal {
   }
 
   #removeCloseListeners() {
-    const closeButton = this.modal.querySelector('#modal-close-button');
-    if (closeButton) {
-      closeButton.removeEventListener('click', this.#handleClose);
+    if (this.closeButton) {
+      this.closeButton.removeEventListener('click', this.#handleClose);
     }
     if (this.shouldCloseOnOverlay) {
       this.overlay.removeEventListener('click', this.#handleClose);
