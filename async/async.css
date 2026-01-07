@@ -1,4 +1,4 @@
-body { 
+.wrapper { 
   font-family: Arial; 
   display: flex; 
   justify-content: center; 
@@ -8,7 +8,7 @@ body {
   background: #f0f0f0;
 }
 
-button {
+.controls button {
   padding: 10px 20px;
   margin: 0 10px;
   border: none;
@@ -23,7 +23,7 @@ button {
   padding: 20px;
 }
 
-#status {
+.status {
   display: none;
   padding: 20px;
   margin: 20px;
@@ -32,10 +32,17 @@ button {
   font-weight: bold;
 }
 
-.loading { background: #4a90e2; color: white; }
-.error { background: #e74c3c; color: white; }
+.loading {
+  background: #4a90e2;
+  color: white;
+}
 
-#usersContainer {
+.error { 
+  background: #e74c3c;
+  color: white;
+}
+
+.users-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -61,7 +68,7 @@ button {
   cursor: pointer;
 }
 
-#controls {
+.controls {
   margin: 20px 0;
 }
 

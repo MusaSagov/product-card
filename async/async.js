@@ -1,70 +1,85 @@
-const save = users => localStorage.setItem('users', JSON.stringify(users));
-const load = () => JSON.parse(localStorage.getItem('users') || '[]');
+const saveUsersToStorage = users => localStorage.setItem('users', JSON.stringify(users));
+const loadUsersFromStorage = () => JSON.parse(localStorage.getItem('users') || '[]');
 
-const msg = (text, isError=false) => {
+const showStatus = (text, isError = false) => {
     const status = document.getElementById('status');
+
     status.textContent = text;
     status.className = isError ? 'error' : 'loading';
     status.style.display = 'block';
+
     setTimeout(() => status.style.display = 'none', 3500);
 };
 
 const showUsers = users => {
-    const container = document.getElementById('usersContainer');
-    container.innerHTML = users.length ? 
-        users.map(u => `<div class="user-card"><h3>${u.name} ${u.surname}</h3><p>${u.email}, ${u.age}</p><button class="delete-btn" data-id="${u.id}">Удалить</button></div>`).join('') : 
-        '<p>Нет пользователей</p>';
+    const container = document.getElementById('users-container');
+
+    if (users.length) {
+        renderUsersList(container, users);
+    } else {
+        container.innerHTML = '<p>Нет пользователей</p>';
+    }
 };
 
-async function start() {
-    let users = load();
-    
+const renderUsersList = (container, users) => {
+    container.innerHTML = users
+        .map(user => `
+            <div class="user-card">
+                <h3>${user.name} ${user.surname}</h3>
+                <p>${user.email}, ${user.age} лет</p>
+                <button class="delete-btn" data-id="${user.id}">
+                    Удалить
+                </button>
+            </div>
+        `)
+        .join('');
+};
+
+async function loadUsers() {
+    let users = loadUsersFromStorage();
+
     if (users.length) {
-        console.log('Берем из localStorage, fetch не делаем');
         showUsers(users);
-        return createButtons();
+    } else {
+        console.log('localStorage пуст, делаем fetch');
+        showStatus('Данные загружаются');
+        
+        try {
+            await new Promise(r => setTimeout(r, 5000));
+            const users = await fetch('users.json').then(r => r.json());
+
+            saveUsersToStorage(users);
+            showUsers(users);
+            showStatus('Загружено!');
+        } catch {
+            showStatus('Ошибка при загрузке данных', true);
+        }
     }
-    
-    console.log('localStorage пуст, делаем fetch');
-    msg('Данные загружаются');
-    
-    try {
-        await new Promise(r => setTimeout(r, 5000));
-        const data = await fetch('users.json').then(r => r.json());
-        save(data.users);
-        showUsers(data.users);
-        msg('Загружено!');
-    } catch {
-        msg('Ошибка при загрузке данных', true);
-    }
-    
+
     createButtons();
 }
 
 const createButtons = () => {
-    document.getElementById('controls').innerHTML = 
-        '<button onclick="start()">Загрузить</button><button id="all">Все</button><button id="clear">Очистить</button>';
-    
-    document.getElementById('all').onclick = () => {
-        const users = load();
-        msg(users.length === document.querySelectorAll('.user-card').length ? 'Уже все!' : 'Показаны все');
+    document.getElementById('show-all').onclick = () => {
+        const users = loadUsersFromStorage();
+
+        showStatus(users.length ? 'Показаны все пользователи!' : 'Нет пользователей');
         showUsers(users);
     };
     
-    document.getElementById('clear').onclick = () => {
+    document.getElementById('clear-storage').onclick = () => {
         localStorage.removeItem('users');
         showUsers([]);
-        msg('Удалено');
+        showStatus('Удалено');
     };
 };
 
 document.addEventListener('click', e => {
     if (e.target.classList.contains('delete-btn')) {
-        save(load().filter(u => u.id != e.target.dataset.id));
-        showUsers(load());
-        msg('Удален');
+        saveUsersToStorage(loadUsersFromStorage().filter(u => u.id != e.target.dataset.id));
+        showUsers(loadUsersFromStorage());
+        showStatus('Удален');
     }
 });
 
-document.addEventListener('DOMContentLoaded', start);
-
+document.addEventListener('DOMContentLoaded', loadUsers);
