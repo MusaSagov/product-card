@@ -1,5 +1,5 @@
 const saveUsersToStorage = users => localStorage.setItem('users', JSON.stringify(users));
-const loadUsersFromStorage = () => JSON.parse(localStorage.getItem('users') || '[]');
+const getUsersFromStorage = () => JSON.parse(localStorage.getItem('users') || '[]');
 
 const showStatus = (text, isError = false) => {
     const status = document.getElementById('status');
@@ -36,7 +36,7 @@ const renderUsersList = (container, users) => {
 };
 
 async function loadUsers() {
-    let users = loadUsersFromStorage();
+    const users = getUsersFromStorage();
 
     if (users.length) {
         showUsers(users);
@@ -56,12 +56,12 @@ async function loadUsers() {
         }
     }
 
-    createButtons();
+    initButtons();
 }
 
-const createButtons = () => {
+const initButtons = () => {
     document.getElementById('show-all').onclick = () => {
-        const users = loadUsersFromStorage();
+        const users = getUsersFromStorage();
 
         showStatus(users.length ? 'Показаны все пользователи!' : 'Нет пользователей');
         showUsers(users);
@@ -76,8 +76,8 @@ const createButtons = () => {
 
 document.addEventListener('click', e => {
     if (e.target.classList.contains('delete-btn')) {
-        saveUsersToStorage(loadUsersFromStorage().filter(u => u.id != e.target.dataset.id));
-        showUsers(loadUsersFromStorage());
+        saveUsersToStorage(getUsersFromStorage().filter(u => u.id != e.target.dataset.id));
+        showUsers(getUsersFromStorage());
         showStatus('Удален');
     }
 });
